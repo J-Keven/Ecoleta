@@ -1,19 +1,21 @@
 import { Router } from "express";
+import * as yup from "yup";
+
 import dbConnection from "./database/connection";
+import itemsController from "./controllers/ItemsContorller";
+import pointController from "./controllers/PointController";
 
 const routes = Router();
 
-routes.get("/items", async (req, res) => {
-  const item = await dbConnection("item").select("*");
+routes.get("/items", itemsController.index);
 
-  const serializedItems = item.map((e) => {
-    return {
-      title: e.title,
-      image: e.image,
-      url: `http://localhost:3333/uploads/${e.image}`,
-    };
-  });
-  return res.json(serializedItems);
+routes.get("/point", pointController.index);
+routes.post("/point", pointController.create);
+routes.get("/point/:id", pointController.show);
+
+routes.get("/pointItems", async (req, res) => {
+  const poitItems = await dbConnection("point_item").select("*");
+  return res.json(poitItems);
 });
 
 export default routes;

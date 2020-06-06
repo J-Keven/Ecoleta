@@ -9,8 +9,8 @@ export async function up(knex: Knex) {
     table.string("image").notNullable();
     table.decimal("latitude").notNullable();
     table.decimal("longitude").notNullable();
-    table.string("uf", 2).notNullable();
     table.string("city").notNullable();
+    table.string("uf", 2).notNullable();
   });
 }
 
