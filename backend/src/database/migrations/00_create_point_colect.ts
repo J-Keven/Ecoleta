@@ -1,7 +1,7 @@
 import Knex from "knex";
 
 export async function up(knex: Knex) {
-  knex.schema.createTable("point", (table) => {
+  return knex.schema.createTable("point", (table) => {
     table.increments("id");
     table.string("name").notNullable();
     table.string("whatsApp").notNullable();
@@ -15,5 +15,5 @@ export async function up(knex: Knex) {
 }
 
 export async function down(knex: Knex) {
-  knex.schema.dropTable("point");
+  return knex.schema.dropTable("point");
 }

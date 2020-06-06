@@ -4,10 +4,7 @@ import { resolve } from "path";
 const connection = knex({
   client: "sqlite3",
   connection: {
-    filename: resolve(__dirname, "src", "database", "./db.sqlite3"),
-  },
-  migrations: {
-    directory: resolve(__dirname, "src", "database", "migrations"),
+    filename: resolve(__dirname, "db.sqlite"),
   },
   useNullAsDefault: true,
 });
