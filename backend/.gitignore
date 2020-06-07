@@ -1,0 +1,10 @@
+# Path
+node_modules
+.vscode
+
+# DATABASE
+*.sqlite3
+*.sqlite
+
+# Files
+package-lock.json
