@@ -1,7 +1,7 @@
 interface Data {
-  id: String;
+  id: number;
   title: string;
-  image: String;
+  image: string;
 }
 
 export default function insertImageUrl(data: []) {
