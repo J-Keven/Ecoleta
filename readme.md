@@ -6,11 +6,8 @@
 
 <h2 align="center">
 
-  <img alt="Capa" src="./assets/Capa.png" width="100%" />
-  <br/>
-  
+  <img alt="Capa" src="./assets/Capa.png" width="100%" height="80%"/>
 </h2>
-
 <p align="center">
   <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -18,9 +15,7 @@
   <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
 </p>
-
-<br>
-
+<br />
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
@@ -39,6 +34,7 @@ O <strong>Ecoleta</strong> é uma aplicação Web e Mobile para ajudar pessoas a
 ## :recycle: Layout
 
 <img alt="Rocketseat - NLW" src="./assets/Ecoleta.png" width="100%" />
+
 ## :fire: Como usar
 
 - ### **Pré-requisitos**
