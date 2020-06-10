@@ -32,7 +32,46 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-## 🤔 Como contribuir
+O <strong>Ecoleta</strong> é uma aplicação Web e Mobile para ajudar pessoas a encontrarem pontos de coleta para reciclagem. ♻️
+
+## :fire: Como usar
+
+- ### **Pré-requisitos**
+
+  - É **necessário** possuir o **[Node.js](https://nodejs.org/en/)** instalado na máquina
+  - Também, é **preciso** ter um gerenciador de pacotes seja o **[NPM](https://www.npmjs.com/)** ou **[Yarn](https://yarnpkg.com/)**.
+  - Por fim, é **essencial** ter o **[Expo](https://expo.io/)** instalado de forma global na máquina
+
+1. Faça um clone :
+
+```sh
+  $ git clone https://github.com/J-Keven/Ecoleta.git
+```
+
+2. Executando a Aplicação:
+
+```sh
+  # Instale as dependências
+  $ npm i
+
+  ## Crie o banco de dados
+  $ cd server
+  $ npm run knex:migrate
+  $ npm run knex:seed
+
+  # Inicie a API
+  $ npm run dev
+
+  # Inicie a aplicação web
+  $ cd web
+  $ npm start
+
+  # Inicie a aplicação mobile
+  $ cd mobile
+  $ npm start
+```
+
+## :recycle: Como contribuir
 
 - Faça um fork desse repositório;
 - Cria uma branch com a sua feature: `git checkout -b minha-feature`;
