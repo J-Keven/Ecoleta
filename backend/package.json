@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --ignore-watch node_modules ./src/Server.ts",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
-    "knex:seed": "knex --knexfile knexfile.ts seed:run"
+    "knex:seed": "knex --knexfile knexfile.ts seed:run",
+    "create:database": "npm run knex:migrate && npm run knex:seed"
   },
   "keywords": [],
   "author": "",

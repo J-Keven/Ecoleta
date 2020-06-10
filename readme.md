@@ -1,12 +1,13 @@
 <h1 align="center">
     <img alt="Next Level Week" src="./assets/logo.svg" width="200px" />
+    <br />
+  🚀 Next Level Week - Booster ♻️
 </h1>
 
 <h2 align="center">
 
-  <img alt="Rocketseat - NLW" src="./assets/rocket.svg" width="200px" />
+  <img alt="Capa" src="./assets/Capa.png" width="100%" />
   <br/>
-  🚀 Next Level Week - Booster ♻️
   
 </h2>
 
@@ -24,8 +25,9 @@
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
+- [TypeScript](https://www.typescriptlang.org/)
 - [Node.js](https://nodejs.org/en/)
-- [React](https://reactjs.org)
+- [ReactJS](https://reactjs.org)
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
 - [Yup](https://github.com/jquense/yup)
@@ -34,6 +36,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O <strong>Ecoleta</strong> é uma aplicação Web e Mobile para ajudar pessoas a encontrarem pontos de coleta para reciclagem. ♻️
 
+## :recycle: Layout
+
+<img alt="Rocketseat - NLW" src="./assets/Ecoleta.png" width="100%" />
 ## :fire: Como usar
 
 - ### **Pré-requisitos**
@@ -55,9 +60,8 @@ O <strong>Ecoleta</strong> é uma aplicação Web e Mobile para ajudar pessoas a
   $ npm i
 
   ## Crie o banco de dados
-  $ cd server
-  $ npm run knex:migrate
-  $ npm run knex:seed
+  $ cd backend
+  $ npm run create:database
 
   # Inicie a API
   $ npm run dev
@@ -83,3 +87,9 @@ Depois que o merge da sua pull request for feito, você pode deletar a sua branc
 ## :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/J-Keven/Ecoleta/blob/master/LICENSE) para mais detalhes.
+
+---
+
+<h4 align="center">
+    Feito com 💜 by <a href="https://www.linkedin.com/in/keven-nunes-884a97159/" target="_blank">Jhonnas Keven</a>
+</h4>
