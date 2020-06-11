@@ -16,6 +16,7 @@
   <a href="#memo-licença">Licença</a>
 </p>
 <br />
+
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
