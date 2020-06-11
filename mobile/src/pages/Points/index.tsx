@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import MapView, { Marker } from "react-native-maps";
@@ -36,7 +36,9 @@ const Points = () => {
           >
             <Marker
               coordinate={{ latitude: -23.6880534, longitude: -46.6555003 }}
-            />
+            >
+              <Image style={styles.mapMarkerImage} source={{ uri: "" }} />
+            </Marker>
           </MapView>
         </View>
       </View>

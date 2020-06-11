@@ -88,5 +88,5 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.c
 ---
 
 <h4 align="center">
-    Feito com 💜 by <a href="https://www.linkedin.com/in/keven-nunes-884a97159/" target="_blank">Jhonnas Keven</a>
+    Feito com 💜 by <a href="https://www.linkedin.com/in/keven-nunes-884a97159/" target="_blank">J-keven</a>
 </h4>
