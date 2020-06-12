@@ -35,16 +35,21 @@ const Points = () => {
             }}
           >
             <Marker
+              onPress={() => {
+                navigation.navigate("Detail");
+              }}
               coordinate={{ latitude: -23.6880534, longitude: -46.6555003 }}
             >
               <View style={styles.mapMarkerContainer}>
                 <Image
                   source={{
                     uri:
-                      "https://www.google.com/imgres?imgurl=https%3A%2F%2Fs2.glbimg.com%2FyNBXsZkUO_ThhUCnPKT2nxlVkcU%3D%2F512x320%2Fsmart%2Fe.glbimg.com%2Fog%2Fed%2Ff%2Foriginal%2F2018%2F06%2F25%2Fmercado.jpg&imgrefurl=https%3A%2F%2Fepocanegocios.globo.com%2FEmpresa%2Fnoticia%2F2018%2F06%2Fmarcas-que-sao-donas-de-quase-tudo-que-voce-compra-no-supermercado.html&tbnid=r-By-EwcldgF3M&vet=12ahUKEwiJpNKAovvpAhWcJrkGHUDnBb0QMygPegUIARCIAg..i&docid=KR_UBxDnAzDvzM&w=512&h=320&q=imagens%20de%20mercado&client=ubuntu&ved=2ahUKEwiJpNKAovvpAhWcJrkGHUDnBb0QMygPegUIARCIAg",
+                      "https://images.unsplash.com/photo-1517243985121-d6ae97460078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
                   }}
                   style={styles.mapMarkerImage}
                 />
+
+                <Text style={styles.mapMarkerTitle}>Mercado</Text>
               </View>
             </Marker>
           </MapView>
