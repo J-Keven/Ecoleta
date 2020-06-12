@@ -37,7 +37,15 @@ const Points = () => {
             <Marker
               coordinate={{ latitude: -23.6880534, longitude: -46.6555003 }}
             >
-              <Image style={styles.mapMarkerImage} source={{ uri: "" }} />
+              <View style={styles.mapMarkerContainer}>
+                <Image
+                  source={{
+                    uri:
+                      "https://www.google.com/imgres?imgurl=https%3A%2F%2Fs2.glbimg.com%2FyNBXsZkUO_ThhUCnPKT2nxlVkcU%3D%2F512x320%2Fsmart%2Fe.glbimg.com%2Fog%2Fed%2Ff%2Foriginal%2F2018%2F06%2F25%2Fmercado.jpg&imgrefurl=https%3A%2F%2Fepocanegocios.globo.com%2FEmpresa%2Fnoticia%2F2018%2F06%2Fmarcas-que-sao-donas-de-quase-tudo-que-voce-compra-no-supermercado.html&tbnid=r-By-EwcldgF3M&vet=12ahUKEwiJpNKAovvpAhWcJrkGHUDnBb0QMygPegUIARCIAg..i&docid=KR_UBxDnAzDvzM&w=512&h=320&q=imagens%20de%20mercado&client=ubuntu&ved=2ahUKEwiJpNKAovvpAhWcJrkGHUDnBb0QMygPegUIARCIAg",
+                  }}
+                  style={styles.mapMarkerImage}
+                />
+              </View>
             </Marker>
           </MapView>
         </View>
