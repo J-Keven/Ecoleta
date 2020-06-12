@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import styles from "./styles";
-
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 const Detail = () => {
   const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View>

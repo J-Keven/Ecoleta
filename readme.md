@@ -36,6 +36,8 @@ O <strong>Ecoleta</strong> é uma aplicação Web e Mobile para ajudar pessoas a
 
 <img alt="Rocketseat - NLW" src="./assets/Ecoleta.png" width="100%" />
 
+- O Layout está disponível no [figma](https://www.figma.com/file/1SxgOMojOB2zYT0Mdk28lB/)
+
 ## :fire: Como usar
 
 - ### **Pré-requisitos**
