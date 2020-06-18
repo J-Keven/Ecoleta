@@ -34,10 +34,21 @@ const Points = () => {
 
   const [items, setItems] = useState<ItemsProps[]>([]);
   const [points, setPoints] = useState<PointsProps[]>([]);
-
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const handleLoadItems = async () => {
     const { data } = await api.get<ItemsProps[]>("/items");
     setItems(data);
+  };
+
+  const handleSelectdedItems = (id: number) => {
+    const isExistId = selectedItems.findIndex((item) => item === id);
+    if (isExistId < 0) {
+      setSelectedItems([...selectedItems, id]);
+    } else {
+      const filteredItems = selectedItems.filter((item) => item !== id);
+
+      setSelectedItems(filteredItems);
+    }
   };
 
   useEffect(() => {
@@ -101,7 +112,9 @@ const Points = () => {
             return (
               <TouchableOpacity
                 style={styles.item}
-                onPress={() => {}}
+                onPress={() => {
+                  handleSelectdedItems(item.id);
+                }}
                 key={item.id}
               >
                 <SvgUri width={42} height={42} uri={item.url} />
