@@ -7,7 +7,7 @@ import insertImageUrl from "./utils/insertImageUrl";
 class PointController {
   async index(req: Request, res: Response) {
     const { uf, city, items } = req.query;
-
+    console.log(String(items));
     const parsedItems = String(items)
       .split(",")
       .map((item) => Number(item.trim()));

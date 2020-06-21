@@ -4,7 +4,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import MapView, { Marker } from "react-native-maps";
 import { SvgUri } from "react-native-svg";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import * as Location from "expo-location";
 
 import api from "../../services/api";
 import styles from "./styles";
@@ -28,16 +29,39 @@ interface PointsProps {
   city: string;
   items: ItemsProps;
 }
-
+interface Params {
+  uf: string;
+  city: string;
+}
 const Points = () => {
   const navigation = useNavigation();
+  const route = useRoute();
 
+  const routeParams = route.params as Params;
+
+  console.log();
   const [items, setItems] = useState<ItemsProps[]>([]);
   const [points, setPoints] = useState<PointsProps[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
+  const [initialPosition, setInitialPosition] = useState<[number, number]>([
+    0,
+    0,
+  ]);
+
   const handleLoadItems = async () => {
     const { data } = await api.get<ItemsProps[]>("/items");
     setItems(data);
+  };
+
+  const handleInitialPosition = async () => {
+    const { status } = await Location.requestPermissionsAsync();
+    if (status !== "granted") {
+      alert("Permission to access location was denied");
+    } else {
+      const { coords } = await Location.getCurrentPositionAsync();
+      setInitialPosition([coords.latitude, coords.longitude]);
+    }
   };
 
   const handleSelectdedItems = (id: number) => {
@@ -56,6 +80,25 @@ const Points = () => {
       handleLoadItems();
     }
   });
+
+  useEffect(() => {
+    api
+      .get<PointsProps[]>("/point", {
+        params: {
+          uf: routeParams.uf,
+          city: routeParams.city,
+          items: selectedItems,
+        },
+      })
+      .then(({ data }) => {
+        setPoints(data);
+      });
+  }, [selectedItems]);
+
+  useEffect(() => {
+    handleInitialPosition();
+  }, []);
+
   return (
     <>
       <View style={styles.container}>
@@ -81,24 +124,32 @@ const Points = () => {
               longitudeDelta: 0.015,
             }}
           >
-            <Marker
-              onPress={() => {
-                navigation.navigate("Detail");
-              }}
-              coordinate={{ latitude: -23.6880534, longitude: -46.6555003 }}
-            >
-              <View style={styles.mapMarkerContainer}>
-                <Image
-                  source={{
-                    uri:
-                      "https://images.unsplash.com/photo-1517243985121-d6ae97460078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+            {points.map((items) => {
+              return (
+                <Marker
+                  key={items.id}
+                  onPress={() => {
+                    navigation.navigate("Detail");
                   }}
-                  style={styles.mapMarkerImage}
-                />
+                  coordinate={{
+                    latitude: items.latitude,
+                    longitude: items.longitude,
+                  }}
+                >
+                  <View style={styles.mapMarkerContainer}>
+                    <Image
+                      source={{
+                        uri:
+                          "https://images.unsplash.com/photo-1517243985121-d6ae97460078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+                      }}
+                      style={styles.mapMarkerImage}
+                    />
 
-                <Text style={styles.mapMarkerTitle}>Mercado</Text>
-              </View>
-            </Marker>
+                    <Text style={styles.mapMarkerTitle}>{items.name}</Text>
+                  </View>
+                </Marker>
+              );
+            })}
           </MapView>
         </View>
       </View>
@@ -111,7 +162,10 @@ const Points = () => {
           {items.map((item) => {
             return (
               <TouchableOpacity
-                style={styles.item}
+                style={[
+                  styles.item,
+                  selectedItems.includes(item.id) ? styles.selectedItem : {},
+                ]}
                 onPress={() => {
                   handleSelectdedItems(item.id);
                 }}

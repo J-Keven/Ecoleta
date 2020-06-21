@@ -38,6 +38,8 @@ const Home = () => {
 
   //   setIbgeUfs(responseUfs);
   // };
+  const [uf, setUf] = useState("");
+  const [city, setCity] = useState("");
 
   return (
     <ImageBackground
@@ -53,13 +55,26 @@ const Home = () => {
         </Text>
       </View>
 
-      <TextInput style={styles.input} placeholder="selecione a cidade" />
-      <TextInput style={styles.input} placeholder="selecione o estado" />
+      <TextInput
+        style={styles.input}
+        placeholder="selecione a cidade"
+        value={city}
+        onChangeText={setCity}
+        autoCorrect={false}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="selecione o estado"
+        value={uf}
+        onChangeText={setUf}
+        maxLength={2}
+        autoCorrect={false}
+      />
 
       <RectButton
         style={styles.button}
         onPress={() => {
-          navigation.navigate("Points");
+          navigation.navigate("Points", { city: city, uf: uf });
         }}
       >
         <View style={styles.buttonIcon}>
