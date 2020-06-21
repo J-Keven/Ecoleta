@@ -1,12 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import styles from "./styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+interface ItemsProps {
+  id: number;
+  title: string;
+  image: string;
+  url: string;
+}
+
+interface DetailsProps {
+  id: number;
+  name: string;
+  whatsApp: string;
+  email: string;
+  image: string;
+  latitude: number;
+  longitude: number;
+  uf: string;
+  city: string;
+  // items: ItemsProps;
+}
+
 const Detail = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const [params, setParams] = useState<DetailsProps>(
+    route.params as DetailsProps
+  );
 
   return (
     <View style={styles.container}>
@@ -25,7 +50,7 @@ const Detail = () => {
       </View>
 
       <View>
-        <Text style={styles.pointName}>Mercado</Text>
+        <Text style={styles.pointName}>{params.name}</Text>
         <Text style={styles.pointItems}>
           Resíduos Eletrônicos, Lâmpadas, Pilhas e Baterias
         </Text>
@@ -34,7 +59,7 @@ const Detail = () => {
       <View style={styles.address}>
         <Text style={styles.addressTitle}>Endereço</Text>
         <Text style={styles.addressContent}>
-          Rio do Sul, Santa Catarina Guilherme Gemballa, Jardim América Nº 260
+          {params.city + ", " + params.uf}
         </Text>
       </View>
 
