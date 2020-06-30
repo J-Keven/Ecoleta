@@ -74,7 +74,10 @@ const Home = () => {
       <RectButton
         style={styles.button}
         onPress={() => {
-          navigation.navigate("Points", { city: city, uf: uf });
+          navigation.navigate("Points", {
+            city: city.toLowerCase(),
+            uf: uf.toUpperCase(),
+          });
         }}
       >
         <View style={styles.buttonIcon}>

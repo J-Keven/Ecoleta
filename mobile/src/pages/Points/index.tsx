@@ -45,8 +45,8 @@ const Points = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
-    0,
-    0,
+    -23.6880534,
+    -46.6555003,
   ]);
 
   const handleLoadItems = async () => {
@@ -118,8 +118,8 @@ const Points = () => {
           <MapView
             style={styles.map}
             initialRegion={{
-              latitude: -23.6880534,
-              longitude: -46.6555003,
+              latitude: initialPosition[0],
+              longitude: initialPosition[1],
               latitudeDelta: 0.015,
               longitudeDelta: 0.015,
             }}

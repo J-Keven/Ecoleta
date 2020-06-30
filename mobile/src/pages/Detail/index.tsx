@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import styles from "./styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import api from "../../services/api";
 
 interface ItemsProps {
   id: number;
@@ -14,6 +15,9 @@ interface ItemsProps {
 
 interface DetailsProps {
   id: number;
+}
+
+interface responseProps {
   name: string;
   whatsApp: string;
   email: string;
@@ -22,9 +26,8 @@ interface DetailsProps {
   longitude: number;
   uf: string;
   city: string;
-  // items: ItemsProps;
+  items: ItemsProps[];
 }
-
 const Detail = () => {
   const navigation = useNavigation();
   const route = useRoute();
@@ -32,6 +35,20 @@ const Detail = () => {
   const [params, setParams] = useState<DetailsProps>(
     route.params as DetailsProps
   );
+
+  const [poitDetails, setPointDetails] = useState<responseProps>(
+    {} as responseProps
+  );
+
+  const handleRequestDetailsPoint = async () => {
+    const { data } = await api.get(`/point/${params.id}`);
+
+    setPointDetails(data);
+  };
+
+  useEffect(() => {
+    handleRequestDetailsPoint();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -50,16 +67,20 @@ const Detail = () => {
       </View>
 
       <View>
-        <Text style={styles.pointName}>{params.name}</Text>
+        <Text style={styles.pointName}>{poitDetails.name}</Text>
         <Text style={styles.pointItems}>
-          Resíduos Eletrônicos, Lâmpadas, Pilhas e Baterias
+          {poitDetails.items
+            .map((item) => {
+              return item.title;
+            })
+            .join(",")}
         </Text>
       </View>
 
       <View style={styles.address}>
         <Text style={styles.addressTitle}>Endereço</Text>
         <Text style={styles.addressContent}>
-          {params.city + ", " + params.uf}
+          {poitDetails.city + ", " + poitDetails.uf}
         </Text>
       </View>
 
