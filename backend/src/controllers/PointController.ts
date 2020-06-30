@@ -36,6 +36,7 @@ class PointController {
     if (!point) {
       return res.status(400).json({ error: "Point not found." });
     }
+
     const items = await dbConnection("item")
       .join("point_item", "item.id", "=", "point_item.id_item")
       .where("id_point", "=", id)

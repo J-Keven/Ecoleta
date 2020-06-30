@@ -28,6 +28,7 @@ interface responseProps {
   city: string;
   items: ItemsProps[];
 }
+
 const Detail = () => {
   const navigation = useNavigation();
   const route = useRoute();
@@ -41,7 +42,7 @@ const Detail = () => {
   );
 
   const handleRequestDetailsPoint = async () => {
-    const { data } = await api.get(`/point/${params.id}`);
+    const { data } = await api.get<responseProps>(`/point/${params.id}`);
 
     setPointDetails(data);
   };
@@ -73,7 +74,7 @@ const Detail = () => {
             .map((item) => {
               return item.title;
             })
-            .join(",")}
+            .join(", ")}
         </Text>
       </View>
 
