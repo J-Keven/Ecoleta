@@ -41,10 +41,14 @@ const Detail = () => {
     {} as responseProps
   );
 
+  const [itemsDetails, setItemsDetails] = useState<ItemsProps[]>([]);
+
   const handleRequestDetailsPoint = async () => {
     const { data } = await api.get<responseProps>(`/point/${params.id}`);
 
+    console.log(data);
     setPointDetails(data);
+    setItemsDetails(data.items);
   };
 
   useEffect(() => {
@@ -69,8 +73,8 @@ const Detail = () => {
 
       <View>
         <Text style={styles.pointName}>{poitDetails.name}</Text>
-        <Text style={styles.pointItems}>
-          {poitDetails.items
+        <Text>
+          {itemsDetails
             .map((item) => {
               return item.title;
             })
@@ -88,13 +92,11 @@ const Detail = () => {
       <View style={styles.footer}>
         <TouchableOpacity style={styles.button}>
           <MaterialCommunityIcons name="whatsapp" size={24} color="#FFF" />
-
           <Text style={styles.buttonText}>WhatsApp</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}>
           <MaterialCommunityIcons name="email-outline" size={24} color="#FFF" />
-
           <Text style={styles.buttonText}>E-Mail</Text>
         </TouchableOpacity>
       </View>
