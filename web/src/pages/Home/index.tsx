@@ -10,11 +10,6 @@ const Home = () => {
       <div className="content">
         <header>
           <img src={logo} alt="Logo applicaotion" />
-
-          {/* <Link to="/create-point">
-            <FiLogIn />
-            Cadastrar um ponto de coleta
-          </Link> */}
         </header>
 
         <main>

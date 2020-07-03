@@ -56,6 +56,7 @@ class PointController {
       latitude,
       city,
       uf,
+      street,
       items,
     } = req.body;
 
@@ -66,6 +67,7 @@ class PointController {
       image: yup.string().required(),
       longitude: yup.number().required(),
       latitude: yup.number().required(),
+      street: yup.string().required(),
       city: yup.string().required(),
       uf: yup.string().required().max(2),
     });
@@ -78,6 +80,7 @@ class PointController {
       longitude,
       latitude,
       city: city.toLowerCase(),
+      street: street.toLowerCase(),
       uf: uf.toUpperCase(),
     };
 
