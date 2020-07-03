@@ -51,7 +51,6 @@ class PointController {
       name,
       email,
       whatsApp,
-      image,
       longitude,
       latitude,
       city,
@@ -60,11 +59,11 @@ class PointController {
       items,
     } = req.body;
 
+    console.log(req.file);
     const Schema = yup.object().shape({
       name: yup.string().required(),
       email: yup.string().required(),
       whatsApp: yup.string().required(),
-      image: yup.string().required(),
       longitude: yup.number().required(),
       latitude: yup.number().required(),
       street: yup.string().required(),
@@ -75,8 +74,8 @@ class PointController {
     const point = {
       name: name.toLowerCase(),
       email,
+      image: req.file.filename,
       whatsApp,
-      image,
       longitude,
       latitude,
       city: city.toLowerCase(),
@@ -92,7 +91,8 @@ class PointController {
 
     const [createdPoint] = await trx("point").insert(point);
 
-    const pointItems = items.map((item: number) => {
+    const vectorItens = items.split(",").map((item: string) => item.trim());
+    const pointItems = vectorItens.map((item: number) => {
       return {
         id_point: createdPoint,
         id_item: item,

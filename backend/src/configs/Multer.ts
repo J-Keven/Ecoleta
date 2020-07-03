@@ -9,12 +9,9 @@ export default {
       cb(null, resolve(__dirname, "..", "..", "temp", "uploads"));
     },
     filename: (req, file, cb) => {
-      crypto.randomBytes(16, (err, hash) => {
-        if (err) cb(err, "");
-
-        const filename = hash.toString("hex") + file.originalname;
-        cb(null, filename);
-      });
+      // const hash = crypto.randomBytes(6).toString("hex");
+      // const fileName = `${hash}-${file.originalname}`;
+      cb(null, file.originalname);
     },
   }),
   //   fileFilter: (
